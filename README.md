@@ -1,54 +1,76 @@
-# DevopsAiProject Crew
+# 🤖 CrewAI Kubernetes Blog Agent 🚀
 
-Welcome to the DevopsAiProject Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+> **Create Local AI Agents at Zero Cost using CrewAI + Ollama + Llama3**  
+> No OpenAI keys, no huge bills – just pure open-source AI magic 🪄
 
-## Installation
+---
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+### 🧠 What This Project Does
 
-First, if you haven't already, install uv:
+This project is an end-to-end tutorial and implementation to **build your own AI Agents** using **CrewAI** and **Llama3**, powered locally by **Ollama**.  
+It performs a real-world task:  
+📌 **"Research the latest trends in Kubernetes and generate a blog post"**
+
+---
+
+### 📌 Why This Project?
+
+There’s a big myth that AI Agent development is:
+- 🧪 Complex
+- 💸 Expensive
+- 👨‍💻 Only for hardcore developers
+
+We’re here to bust that myth. Thanks to open-source tools like **CrewAI**, **Ollama**, and **LangChain-style agents**, you can build powerful multi-agent setups on your own laptop – for free!
+
+---
+
+### 🔍 Features
+
+- ✅ Local LLM setup with **Ollama**
+- ✅ Use of **Llama3 1B** model (totally free & local)
+- ✅ Built with **CrewAI** multi-agent orchestration
+- ✅ No cloud API usage or token limit
+- ✅ Zero-to-hero guide with clear steps
+- ✅ Clean Python project structure
+- ✅ Final output in Markdown (`report.md`)
+
+---
+
+### 🚧 What You’ll Learn
+
+- 🤖 AI Agents vs AI Assistants  
+- 📦 Installing & setting up **CrewAI**  
+- 🐍 Python virtual environment & dependency management  
+- ⚙️ Ollama setup & local LLM configuration  
+- 🔁 Agent collaboration using **CrewAI**  
+- 🧩 Multi-agent configuration using YAML  
+- 📝 Final blog generation on **Kubernetes trends**
+
+---
+
+### ⚙️ Setup & Installation
 
 ```bash
-pip install uv
-```
+# Step 1: Create virtual environment
+python -m venv crew
+source crew/bin/activate  # use crew\Scripts\activate for Windows
 
-Next, navigate to your project directory and install the dependencies:
+# Step 2: Install CrewAI
+pip install crewai
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
+# Step 3: Create new project
+crewai create crew devops-ai-project
+cd devops_ai_project/
+
+# Step 4: Setup Ollama (run in another terminal)
+ollama list
+ollama run llama3.2:1b
+
+# Step 5: Configure the LLM in .env
+echo "MODEL_NAME=llama3.2:1b" > .env
+
+# Step 6: Install agent dependencies
 crewai install
-```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
-
-- Modify `src/devops_ai_project/config/agents.yaml` to define your agents
-- Modify `src/devops_ai_project/config/tasks.yaml` to define your tasks
-- Modify `src/devops_ai_project/crew.py` to add your own logic, tools and specific args
-- Modify `src/devops_ai_project/main.py` to add custom inputs for your agents and tasks
-
-## Running the Project
-
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
-
-```bash
-$ crewai run
-```
-
-This command initializes the devops-ai-project Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
-
-## Understanding Your Crew
-
-The devops-ai-project Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the DevopsAiProject Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
+# Step 7: Run the agents
+crewai run
